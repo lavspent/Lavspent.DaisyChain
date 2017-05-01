@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <Version>0.2.0</Version>
+    <Authors>Petter Labråten</Authors>
+    <Company>Petter Labråten</Company>
+    <Description>Firmata extensions for Lavspent.DaisyChain.</Description>
+    <Copyright>Copyright © 2017 Petter Labråten</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/lavspent/Lavspent.DaisyChain/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lavspent/Lavspent.DaisyChain/</RepositoryUrl>
+    <PackageTags>.Net Core Universal Store Xamarin Iot Gpio Adc I2c OneWire 1-Wire Firmata</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extra\Lavspent.AsyncInline\Lavspent.AsyncInline.csproj" />
+    <ProjectReference Include="..\..\Extra\Lavspent.Backport\Lavspent.Backport.csproj">
+      <Project>{02c34a58-60b5-44c6-b3c8-20ec46c7fce3}</Project>
+      <Name>Lavspent.Backport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extra\Lavspent.RuntimeTypeDispatcher\Lavspent.RuntimeTypeDispatcher.csproj">
+      <Project>{cbfe161c-53d3-4857-8ced-428807837428}</Project>
+      <Name>Lavspent.RuntimeTypeDispatcher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extra\Lavspent.TaskReactor\Lavspent.TaskReactor.csproj">
+      <Project>{bbbec180-b087-441c-b651-bfe382149c3b}</Project>
+      <Name>Lavspent.TaskReactor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extra\Nito.AsyncLazy\Nito.AsyncLazy.csproj">
+      <Project>{16ea2af0-a14d-4e73-92ba-2709c9015e45}</Project>
+      <Name>Nito.AsyncLazy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lavspent.DaisyChain\Lavspent.DaisyChain.csproj">
+      <Project>{943c53cf-8b99-4d08-b2db-c42bb2639ffc}</Project>
+      <Name>Lavspent.DaisyChain</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

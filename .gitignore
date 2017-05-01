@@ -2,4 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Extra/Lavspent.AsyncInline/obj/Debug/netstandard1.0
+obj/
+bin/
+Debug/
+Release/
+/packages
+*.vspscc
+/.vs

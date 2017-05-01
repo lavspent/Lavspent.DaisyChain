@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <Version>0.2.0</Version>
+    <Authors>Petter Labråten</Authors>
+    <Company>Petter Labråten</Company>
+    <Description />
+    <Copyright>Copyright © 2017 Petter Labråten</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/lavspent/Lavspent.DaisyChain/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lavspent/Lavspent.DaisyChain/</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\..\Extra\Lavspent.Backport\Lavspent.Backport.csproj">
+      <Project>{02c34a58-60b5-44c6-b3c8-20ec46c7fce3}</Project>
+      <Name>Lavspent.Backport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lavspent.DaisyChain\Lavspent.DaisyChain.csproj">
+      <Project>{943c53cf-8b99-4d08-b2db-c42bb2639ffc}</Project>
+      <Name>Lavspent.DaisyChain</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
