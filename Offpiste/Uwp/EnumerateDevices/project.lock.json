@@ -24347,10 +24347,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\EnumerateDevices.csproj",
+      "projectUniqueName": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\EnumerateDevices.csproj",
       "projectName": "EnumerateDevices",
-      "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\EnumerateDevices.csproj",
-      "projectJsonPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\project.json",
+      "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\EnumerateDevices.csproj",
+      "projectJsonPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\EnumerateDevices\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

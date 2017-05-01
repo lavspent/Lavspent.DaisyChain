@@ -29,9 +29,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DaisyChain\Lavspent.DaisyChain\Lavspent.DaisyChain.csproj">
-      <Project>{943c53cf-8b99-4d08-b2db-c42bb2639ffc}</Project>
-      <Name>Lavspent.DaisyChain</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\DaisyChain\Lavspent.DaisyChain\Lavspent.DaisyChain.csproj" />
   </ItemGroup>
 </Project>

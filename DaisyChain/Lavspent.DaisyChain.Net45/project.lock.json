@@ -2862,16 +2862,16 @@
       "licenseUrl": "https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE"
     },
     "restore": {
-      "projectUniqueName": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj",
+      "projectUniqueName": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj",
       "projectName": "Lavspent.DaisyChain.Net45",
-      "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj",
-      "projectJsonPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\project.json",
+      "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj",
+      "projectJsonPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Net45\\project.json",
       "projectStyle": "ProjectJson",
       "frameworks": {
         "net45": {
           "projectReferences": {
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
             }
           }
         }

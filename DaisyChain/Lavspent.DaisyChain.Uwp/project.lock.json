@@ -25884,19 +25884,19 @@
       "licenseUrl": "https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE"
     },
     "restore": {
-      "projectUniqueName": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj",
+      "projectUniqueName": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj",
       "projectName": "Lavspent.DaisyChain.Uwp",
-      "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj",
-      "projectJsonPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\project.json",
+      "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj",
+      "projectJsonPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\project.json",
       "projectStyle": "ProjectJson",
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Extra\\Lavspent.AsyncInline\\Lavspent.AsyncInline.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Extra\\Lavspent.AsyncInline\\Lavspent.AsyncInline.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Extra\\Lavspent.AsyncInline\\Lavspent.AsyncInline.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Extra\\Lavspent.AsyncInline\\Lavspent.AsyncInline.csproj"
             },
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
             }
           }
         }

@@ -24347,10 +24347,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\D2xxTest.csproj",
+      "projectUniqueName": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\D2xxTest.csproj",
       "projectName": "D2xxTest",
-      "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\D2xxTest.csproj",
-      "projectJsonPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\project.json",
+      "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\D2xxTest.csproj",
+      "projectJsonPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Offpiste\\Uwp\\D2xxTest\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

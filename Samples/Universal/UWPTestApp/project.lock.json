@@ -26204,25 +26204,22 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\UWPTestApp.csproj",
+      "projectUniqueName": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\UWPTestApp.csproj",
       "projectName": "UWPTestApp",
-      "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\UWPTestApp.csproj",
-      "projectJsonPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\project.json",
+      "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\UWPTestApp.csproj",
+      "projectJsonPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\Samples\\Universal\\UWPTestApp\\project.json",
       "projectStyle": "ProjectJson",
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Firmata\\Lavspent.DaisyChain.Firmata.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Firmata\\Lavspent.DaisyChain.Firmata.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Firmata\\Lavspent.DaisyChain.Firmata.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Firmata\\Lavspent.DaisyChain.Firmata.csproj"
             },
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj"
             },
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
-            },
-            "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Extra\\Lavspent.TaskReactor\\Lavspent.TaskReactor.csproj": {
-              "projectPath": "C:\\Tfs\\Lavspent\\DaisyChain\\Main\\Lavspent.DaisyChain\\Extra\\Lavspent.TaskReactor\\Lavspent.TaskReactor.csproj"
+            "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj": {
+              "projectPath": "C:\\Users\\Petter\\Source\\Repos\\Lavspent.DaisyChain\\DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj"
             }
           }
         }
