@@ -17,7 +17,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lavspent/Lavspent.DaisyChain/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lavspent/Lavspent.DaisyChain/</RepositoryUrl>
-    <PackageTags>.Net Core Universal Store Xamarin Iot Gpio Adc I2c OneWire 1-Wire Firmata</PackageTags>
+    <PackageTags>Adxl345 Ht16K33 Hmc5883L Itg3200 Ds18B20 Ds2482 Mcp23017 Sdd1306 Tca9548A</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
