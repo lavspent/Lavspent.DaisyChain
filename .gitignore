@@ -10,3 +10,6 @@ Release/
 *.vspscc
 /.vs
 *.lock.json
+*.csproj.user
+
+
