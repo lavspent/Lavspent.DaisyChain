@@ -1,2 +1,2 @@
 # Lavspent.DaisyChain
-Portable class library for interfacing hardware devices.
+NetStandard class library for interfacing hardware devices.
