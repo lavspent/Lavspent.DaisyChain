@@ -1,6 +1,9 @@
 {
+  "dependencies": {
+    "Lavspent.Daisychain": "0.2.1"
+  },
   "runtimes": {
-    "win": {} 
+    "win": {}
   },
   "frameworks": {
     ".NETFramework,Version=v4.5": {}

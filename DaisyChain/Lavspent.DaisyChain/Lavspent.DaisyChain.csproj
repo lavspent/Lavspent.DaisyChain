@@ -86,7 +86,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE</PackageLicenseUrl>
     <PackageTags>.Net Core Universal Store Xamarin Iot Gpio Adc I2c OneWire 1-Wire Firmata</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <Description>Portable class library for interfacing hardware devices.</Description>
     <Copyright>Copyright © 2017 Petter Labråten</Copyright>
     <RepositoryUrl>https://github.com/lavspent/Lavspent.DaisyChain/</RepositoryUrl>
@@ -96,24 +96,7 @@
     <None Include="project.json" />
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Extra\Lavspent.Backport\Lavspent.Backport.csproj">
-      <Project>{02c34a58-60b5-44c6-b3c8-20ec46c7fce3}</Project>
-      <Name>Lavspent.Backport</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\Extra\Lavspent.Backport\Lavspent.Backport.csproj" />
   </ItemGroup>
-
-  
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  -->
-  <!-- 
-  Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
-    <Exec Command="nuget pack Lavspent.DaisyChain.nuspec -Prop Configuration=Release">
-    </Exec>
-  </Target
-  -->
 </Project>

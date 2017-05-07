@@ -5,6 +5,7 @@
     ".NETPortable,Version=v4.5,Profile=Profile7": {}
   },
   "packOptions": {
+    "title":  "Lavspent.DaisyChain",
     "projectUrl": "https://github.com/lavspent/Lavspent.DaisyChain/",
     "licenseUrl": "https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE",
     "requireLicenseAcceptance": false,

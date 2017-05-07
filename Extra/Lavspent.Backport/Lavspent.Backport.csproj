@@ -7,8 +7,25 @@
     <SccLocalPath>SAK</SccLocalPath>
   </PropertyGroup>
 
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
+    <AssemblyVersion>0.2.1.0</AssemblyVersion>
+    <FileVersion>0.2.1.0</FileVersion>
+    <Version>0.2.1</Version>
+    <Authors>Petter Labråten</Authors>
+    <Company>Petter Labråten</Company>
+    <Description />
+    <Copyright>Copyright © 2017 Petter Labråten</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/lavspent/Lavspent.DaisyChain/</PackageProjectUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <ApplicationIcon />
+    <OutputTypeEx>library</OutputTypeEx>
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

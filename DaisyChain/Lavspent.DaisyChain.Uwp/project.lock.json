@@ -2396,25 +2396,25 @@
           }
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -4844,25 +4844,25 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -7331,25 +7331,25 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -9788,25 +9788,25 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -12284,25 +12284,25 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -14741,25 +14741,25 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -17237,25 +17237,25 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Lavspent.AsyncInline/1.0.0": {
+      "Lavspent.AsyncInline/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -25837,17 +25837,17 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Lavspent.AsyncInline/1.0.0": {
+    "Lavspent.AsyncInline/0.2.1": {
       "type": "project",
       "path": "../../Extra/Lavspent.AsyncInline/Lavspent.AsyncInline.csproj",
       "msbuildProject": "../../Extra/Lavspent.AsyncInline/Lavspent.AsyncInline.csproj"
     },
-    "Lavspent.Backport/1.0.0": {
+    "Lavspent.Backport/0.2.1": {
       "type": "project",
       "path": "../../Extra/Lavspent.Backport/Lavspent.Backport.csproj",
       "msbuildProject": "../../Extra/Lavspent.Backport/Lavspent.Backport.csproj"
     },
-    "Lavspent.DaisyChain/0.2.0": {
+    "Lavspent.DaisyChain/0.2.1": {
       "type": "project",
       "path": "../Lavspent.DaisyChain/Lavspent.DaisyChain.csproj",
       "msbuildProject": "../Lavspent.DaisyChain/Lavspent.DaisyChain.csproj"

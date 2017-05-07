@@ -382,18 +382,18 @@
           "lib/net45/_._": {}
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -769,18 +769,18 @@
           "lib/net45/_._": {}
         }
       },
-      "Lavspent.Backport/1.0.0": {
+      "Lavspent.Backport/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Lavspent.DaisyChain/0.2.0": {
+      "Lavspent.DaisyChain/0.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.0",
         "dependencies": {
-          "Lavspent.Backport": "1.0.0",
+          "Lavspent.Backport": "0.2.1",
           "NETStandard.Library": "1.6.1"
         }
       }
@@ -2822,19 +2822,21 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Lavspent.Backport/1.0.0": {
+    "Lavspent.Backport/0.2.1": {
       "type": "project",
       "path": "../../Extra/Lavspent.Backport/Lavspent.Backport.csproj",
       "msbuildProject": "../../Extra/Lavspent.Backport/Lavspent.Backport.csproj"
     },
-    "Lavspent.DaisyChain/0.2.0": {
+    "Lavspent.DaisyChain/0.2.1": {
       "type": "project",
       "path": "../Lavspent.DaisyChain/Lavspent.DaisyChain.csproj",
       "msbuildProject": "../Lavspent.DaisyChain/Lavspent.DaisyChain.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "": [],
+    "": [
+      "Lavspent.Daisychain >= 0.2.1"
+    ],
     ".NETFramework,Version=v4.5": []
   },
   "packageFolders": {
@@ -2876,6 +2878,9 @@
           }
         }
       }
+    },
+    "dependencies": {
+      "Lavspent.Daisychain": "0.2.1"
     },
     "frameworks": {
       "net45": {}
