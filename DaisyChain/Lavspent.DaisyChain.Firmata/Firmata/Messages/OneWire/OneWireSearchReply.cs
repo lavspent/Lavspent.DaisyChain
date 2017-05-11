@@ -140,9 +140,15 @@ namespace Lavspent.DaisyChain.Firmata.Messages
 
             for (int i = 0; i < data.Length / 8; i++)
             {
-                byte[] subset = new byte[8];
-                Array.Copy(convertedData, i * 8, subset, 0, 8);
-                addresses.Add(subset);
+                try
+                {
+                    byte[] subset = new byte[8];
+                    Array.Copy(convertedData, i * 8, subset, 0, 8);
+                    addresses.Add(subset);
+                } catch
+                {
+                    // ignore
+                }
             }
 
             return addresses;
