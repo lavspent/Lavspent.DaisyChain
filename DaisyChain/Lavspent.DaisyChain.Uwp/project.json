@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
+    "Lavspent.DaisyChain": "0.2.1"
   },
   "frameworks": {
     "uap10.0": {}
@@ -17,21 +18,6 @@
     "projectUrl": "https://github.com/lavspent/Lavspent.DaisyChain/",
     "licenseUrl": "https://raw.githubusercontent.com/lavspent/Lavspent.DaisyChain/master/LICENSE",
     "requireLicenseAcceptance": false,
-    "tags": [
-      ".Net",
-      "Core",
-      "Universal",
-      "Store",
-      "Xamarin",
-      "iOs",
-      "Android",
-      "Iot",
-      "Gpio",
-      "Adc",
-      "I2c",
-      "OneWire",
-      "1-Wire",
-      "Firmata"
-    ]
+    "tags": [ ".Net", "Core", "Universal", "Store", "Xamarin", "iOs", "Android", "Iot", "Gpio", "Adc", "I2c", "OneWire", "1-Wire", "Firmata" ]
   }
 }
