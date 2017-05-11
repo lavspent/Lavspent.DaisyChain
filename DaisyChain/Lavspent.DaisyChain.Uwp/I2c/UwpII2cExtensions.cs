@@ -81,5 +81,26 @@ namespace Lavspent.DaisyChain.I2c
         {
             return new UwpI2cControllerWrapper(_this);
         }
+
+
+        /// <summary>
+        /// Convert this UWP I2cController to a DaisyChain I2cController.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <returns></returns>
+        public static Task<DaisyChain.I2c.II2cController> AsDaisyChainI2cControllerAsync(this IAsyncOperation<Windows.Devices.I2c.I2cController> _this)
+        {
+            return _this.AsTask().AsDaisyChainI2cControllerAsync();
+        }
+
+        /// <summary>
+        /// Convert this UWP I2cController to a DaisyChain I2cController.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <returns></returns>
+        public static async Task<DaisyChain.I2c.II2cController> AsDaisyChainI2cControllerAsync(this Task<Windows.Devices.I2c.I2cController> _this)
+        {
+            return (await _this.ConfigureAwait(false)).AsDaisyChainI2cController();
+        }
     }
 }
