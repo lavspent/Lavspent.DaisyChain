@@ -47,7 +47,7 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static DaisyChain.I2c.II2cDevice AsDaisyChainI2cDevice(this Windows.Devices.I2c.I2cDevice _this)
+        public static II2cDevice AsDaisyChainI2cDevice(this Windows.Devices.I2c.I2cDevice _this)
         {
             return new UwpI2cDeviceWrapper(_this);
         }
@@ -77,7 +77,7 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static DaisyChain.I2c.II2cController AsDaisyChainI2cController(this Windows.Devices.I2c.I2cController _this)
+        public static II2cController AsDaisyChainI2cController(this Windows.Devices.I2c.I2cController _this)
         {
             return new UwpI2cControllerWrapper(_this);
         }
@@ -88,7 +88,7 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static Task<DaisyChain.I2c.II2cController> AsDaisyChainI2cControllerAsync(this IAsyncOperation<Windows.Devices.I2c.I2cController> _this)
+        public static Task<II2cController> AsDaisyChainI2cControllerAsync(this IAsyncOperation<Windows.Devices.I2c.I2cController> _this)
         {
             return _this.AsTask().AsDaisyChainI2cControllerAsync();
         }
@@ -98,7 +98,7 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static async Task<DaisyChain.I2c.II2cController> AsDaisyChainI2cControllerAsync(this Task<Windows.Devices.I2c.I2cController> _this)
+        public static async Task<II2cController> AsDaisyChainI2cControllerAsync(this Task<Windows.Devices.I2c.I2cController> _this)
         {
             return (await _this.ConfigureAwait(false)).AsDaisyChainI2cController();
         }
