@@ -22,18 +22,27 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using System.ComponentModel;
+using System.Threading.Tasks;
+
 namespace Lavspent.DaisyChain.I2c
 {
     /// <summary>
-    /// 
+    /// Extends II2cDevices with some commonly used methods.
     /// </summary>
-    public interface II2cController
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public static class II2cControllerExtensions
     {
         /// <summary>
         /// Open a I2cDevice on this controller.
         /// </summary>
+        /// <param name="_this"></param>
         /// <param name="settings"></param>
         /// <returns></returns>
-        II2cDevice GetDevice(I2cConnectionSettings settings);
+        public static async Task<II2cDevice> GetDeviceAsync(this Task<II2cController> _this, I2cConnectionSettings settings)
+        {
+            return (await _this.ConfigureAwait(false)).GetDevice(settings);
+        }
+
     }
 }
