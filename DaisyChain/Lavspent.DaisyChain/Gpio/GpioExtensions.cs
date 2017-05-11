@@ -22,6 +22,7 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using System;
 using System.ComponentModel;
 
 namespace Lavspent.DaisyChain.Gpio
@@ -31,6 +32,9 @@ namespace Lavspent.DaisyChain.Gpio
     {
         public static IGpio WithSoftInterrupt(this IGpio _this, bool disposeGpio = true)
         {
+            if (_this == null)
+                throw new ArgumentNullException(nameof(_this));
+
             if (_this is SoftInterruptGpio)
                 return _this;
 
