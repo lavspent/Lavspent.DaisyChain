@@ -22,7 +22,10 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
+using Windows.Foundation;
 
 namespace Lavspent.DaisyChain.I2c
 {
@@ -40,13 +43,33 @@ namespace Lavspent.DaisyChain.I2c
         }
 
         /// <summary>
-        /// Convert this UWP I2cDevice to a DaisyChain I2cController.
+        /// Convert this UWP I2cDevice to a DaisyChain I2cDevice.
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
         public static DaisyChain.I2c.II2cDevice AsDaisyChainI2cDevice(this Windows.Devices.I2c.I2cDevice _this)
         {
             return new UwpI2cDeviceWrapper(_this);
+        }
+
+        /// <summary>
+        /// Convert this UWP I2cDevice to a DaisyChain I2cDevice.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <returns></returns>
+        public static Task<II2cDevice> AsDaisyChainI2cDeviceAsync(this IAsyncOperation<Windows.Devices.I2c.I2cDevice> _this)
+        {
+            return _this.AsTask().AsDaisyChainI2cDeviceAsync();
+        }
+
+        /// <summary>
+        /// Convert this UWP I2cDevice to a DaisyChain I2cDevice.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <returns></returns>
+        public async static Task<II2cDevice> AsDaisyChainI2cDeviceAsync(this Task<Windows.Devices.I2c.I2cDevice> _this)
+        {
+            return (await _this.ConfigureAwait(false)).AsDaisyChainI2cDevice();
         }
 
         /// <summary>
