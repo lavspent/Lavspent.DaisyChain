@@ -25,8 +25,8 @@
 using Lavspent.DaisyChain.I2c;
 using Lavspent.DaisyChain.OneWire;
 using System;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
 {
@@ -35,7 +35,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
     /// </summary>
     public class Ds2482 : IOneWireBusController
     {
-        private II2cDevice i2cDevice;
+        private II2cDevice _i2cDevice;
 
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
         /// <param name="i2cDevice"></param>
         public Ds2482(II2cDevice i2cDevice)
         {
-            this.i2cDevice = i2cDevice;
+            this._i2cDevice = i2cDevice;
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
         /// <returns></returns>
         public async Task<Ds2482StatusFlags> ReadStatusAsync()
         {
-            await i2cDevice.WriteReadAsync(readStatusWriteBuffer, readStatusReadBuffer).ConfigureAwait(false);
+            await _i2cDevice.WriteReadAsync(readStatusWriteBuffer, readStatusReadBuffer).ConfigureAwait(false);
             return (Ds2482StatusFlags)readStatusReadBuffer[0];
         }
 
@@ -78,7 +78,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
         /// <returns></returns>
         public async Task<byte> ReadDataAsync()
         {
-            await i2cDevice.WriteReadAsync(readDataWriteBuffer, readDataReadBuffer).ConfigureAwait(false);
+            await _i2cDevice.WriteReadAsync(readDataWriteBuffer, readDataReadBuffer).ConfigureAwait(false);
             return readDataReadBuffer[0];
         }
 
@@ -91,7 +91,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
         /// </summary>
         public async Task<Ds2482ConfigurationFlags> ReadConfigurationAsync()
         {
-            await i2cDevice.WriteReadAsync(readConfigurationWriteBuffer, readConfigurationReadBuffer).ConfigureAwait(false);
+            await _i2cDevice.WriteReadAsync(readConfigurationWriteBuffer, readConfigurationReadBuffer).ConfigureAwait(false);
             return (Ds2482ConfigurationFlags)readConfigurationReadBuffer[0];
         }
 
@@ -145,7 +145,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
             // TODO: This number is at best a bit random
             for (int i = 100000; i > 0; i--)
             {
-                await i2cDevice.WriteReadAsync(readStatusWriteBuffer, readStatusReadBuffer).ConfigureAwait(false);
+                await _i2cDevice.WriteReadAsync(readStatusWriteBuffer, readStatusReadBuffer).ConfigureAwait(false);
                 if ((readStatusReadBuffer[0] & (byte)Ds2482StatusFlags.OneWireBusy) == 0)
                     break;
             }
@@ -181,7 +181,7 @@ namespace Lavspent.DaisyChain.Devices.MaximIntegrated.Ds2482
         /// <returns></returns>
         public async Task WriteRawAsync(params byte[] data)
         {
-            var res = await i2cDevice.WritePartialAsync(data).ConfigureAwait(false);
+            var res = await _i2cDevice.WritePartialAsync(data).ConfigureAwait(false);
             if (res.Status != I2cTransferStatus.FullTransfer)
                 throw new Exception("Write failed.");
         }
