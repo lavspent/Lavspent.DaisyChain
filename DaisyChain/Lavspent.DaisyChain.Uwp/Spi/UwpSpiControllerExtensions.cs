@@ -22,8 +22,11 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Windows.Devices.Spi;
+using Windows.Foundation;
 
 namespace Lavspent.DaisyChain.Spi
 {
@@ -39,6 +42,28 @@ namespace Lavspent.DaisyChain.Spi
         public static ISpiController AsDaisyChainSpiController(this SpiController _this, int chipSelectLine)
         {
             return new UwpSpiControllerWrapper(_this, chipSelectLine);
+        }
+
+        /// <summary>
+        /// Convert this SpiController to a DaisyChain compatible ISpiController.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <param name="chipSelectLine"></param>
+        /// <returns></returns>        
+        public static Task<ISpiController> AsDaisyChainSpiControllerAsync(this IAsyncOperation<SpiController> _this, int chipSelectLine)
+        {
+            return _this.AsTask().AsDaisyChainSpiControllerAsync(chipSelectLine);
+        }
+
+        /// <summary>
+        /// Convert this SpiController to a DaisyChain compatible ISpiController.
+        /// </summary>
+        /// <param name="_this"></param>
+        /// <param name="chipSelectLine"></param>
+        /// <returns></returns>
+        public static async Task<ISpiController> AsDaisyChainSpiControllerAsync(this Task<SpiController> _this, int chipSelectLine)
+        {
+            return (await _this.ConfigureAwait(false)).AsDaisyChainSpiController(chipSelectLine);
         }
     }
 }
