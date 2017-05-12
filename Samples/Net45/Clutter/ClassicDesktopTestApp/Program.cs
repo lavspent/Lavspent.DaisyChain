@@ -33,7 +33,7 @@ namespace ClassicDesktopTestApp
             II2cController i2cController = await _firmataClient.GetI2cControllerAsync();
 
             // Set up connection to i2c device at address 0x1E
-            II2cDevice i2cCompassDevice = i2cController.GetDevice(new I2cConnectionSettings(0x1E));
+            II2cDevice i2cCompassDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(0x1E));
 
             // Treat this i2c device as a Hmc5883L compass chip.
             var hmc5883L = new Hmc5883L(i2cCompassDevice);
@@ -62,7 +62,7 @@ namespace ClassicDesktopTestApp
                 II2cController i2cController = await _firmataClient.GetI2cControllerAsync();
 
 
-                II2cDevice i2cCompassDevice = i2cController.GetDevice(new I2cConnectionSettings(0x1E));
+                II2cDevice i2cCompassDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(0x1E));
                 var hmc5883L = new Hmc5883L(i2cCompassDevice);
                 await hmc5883L.SetMeasuringModeAsync(Hmc5883MeasuringModes.Continuous);
 
@@ -86,7 +86,7 @@ namespace ClassicDesktopTestApp
                 II2cController i2cController = await _firmataClient.GetI2cControllerAsync();
 
                 // Get det I2cDevice with address 0x71 from the controller
-                II2cDevice i2cDevice71 = i2cController.GetDevice(new I2cConnectionSettings(0x71));
+                II2cDevice i2cDevice71 = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(0x71));
 
                 // Wrap it as a  Tca9548A I2c mux
                 Tca9548A tca9548A = new Tca9548A(i2cDevice71);
@@ -95,7 +95,7 @@ namespace ClassicDesktopTestApp
                 II2cController i2cMux6Controller = tca9548A.GetI2cController(6);
 
                 // Grab I2cDevice with address 0x70 from that controller
-                II2cDevice i2cDevice = i2cMux6Controller.GetDevice(new I2cConnectionSettings(0x70));
+                II2cDevice i2cDevice = await i2cMux6Controller.OpenDeviceAsync(new I2cConnectionSettings(0x70));
 
                 // Wrap it a a HT16K33 display driver
                 Ht16K33 ht16K33 = new Ht16K33(i2cDevice);
@@ -132,7 +132,7 @@ namespace ClassicDesktopTestApp
                 II2cController i2cMux2Controller = tca9548A.GetI2cController(2);
 
                 // Grab I2cDevice with address 0x70 from that controller
-                II2cDevice i2cDevice2 = i2cMux2Controller.GetDevice(new I2cConnectionSettings(0x70));
+                II2cDevice i2cDevice2 = await i2cMux2Controller.OpenDeviceAsync(new I2cConnectionSettings(0x70));
 
                 // Wrap it a a HT16K33 display driver
                 Ht16K33 ht16K33_ = new Ht16K33(i2cDevice2);
@@ -160,7 +160,7 @@ namespace ClassicDesktopTestApp
                 ht16K33_.DisplayEnabled = true;
 
 
-                II2cDevice i2cCompassDevice = i2cMux2Controller.GetDevice(new I2cConnectionSettings(0x1E));
+                II2cDevice i2cCompassDevice = await i2cMux2Controller.OpenDeviceAsync(new I2cConnectionSettings(0x1E));
                 var hmc5883L = new Hmc5883L(i2cCompassDevice);
                 await hmc5883L.SetMeasuringModeAsync(Hmc5883MeasuringModes.Continuous);
 

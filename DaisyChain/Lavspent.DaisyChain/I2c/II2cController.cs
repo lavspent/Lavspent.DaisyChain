@@ -22,6 +22,9 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Lavspent.DaisyChain.I2c
 {
     /// <summary>
@@ -34,6 +37,6 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        II2cDevice GetDevice(I2cConnectionSettings settings);
+        Task<II2cDevice> OpenDeviceAsync(I2cConnectionSettings settings, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

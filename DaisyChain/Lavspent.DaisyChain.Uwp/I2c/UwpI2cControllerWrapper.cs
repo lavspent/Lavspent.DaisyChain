@@ -23,6 +23,9 @@
 */
 
 
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Lavspent.DaisyChain.I2c
 {
     /// <summary>
@@ -46,13 +49,15 @@ namespace Lavspent.DaisyChain.I2c
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public II2cDevice GetDevice(I2cConnectionSettings settings)
+        public Task<II2cDevice> OpenDeviceAsync(I2cConnectionSettings settings, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _i2cController.GetDevice(new Windows.Devices.I2c.I2cConnectionSettings(settings.SlaveAddress)
+            var device = _i2cController.GetDevice(new Windows.Devices.I2c.I2cConnectionSettings(settings.SlaveAddress)
             {
                 BusSpeed = (Windows.Devices.I2c.I2cBusSpeed)settings.BusSpeed,
                 SharingMode = (Windows.Devices.I2c.I2cSharingMode)settings.SharingMode
             }).AsDaisyChainI2cDevice();
+
+            return Task.FromResult<II2cDevice>(device);
         }
     }
 }

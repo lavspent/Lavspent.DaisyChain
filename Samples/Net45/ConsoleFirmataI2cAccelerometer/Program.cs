@@ -29,7 +29,7 @@ namespace ConsoleFirmataI2cAccelerometer
             var i2cController = await firmataClient.GetI2cControllerAsync();
 
             // Set up connection to i2c device at address 0x53
-            var i2cDevice = i2cController.GetDevice(new I2cConnectionSettings(0x53));
+            var i2cDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(0x53));
 
             // 
             var adxl345 = await Adxl345.Create(i2cDevice);

@@ -24,6 +24,8 @@
 
 using Lavspent.DaisyChain.I2c;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Lavspent.DaisyChain.Devices.TexasInstruments.Tca9548A
 {
@@ -56,7 +58,7 @@ namespace Lavspent.DaisyChain.Devices.TexasInstruments.Tca9548A
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public II2cDevice GetDevice(I2cConnectionSettings settings)
+        public async Task<II2cDevice> OpenDeviceAsync(I2cConnectionSettings settings, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (settings.SlaveAddress == _i2cDevice.ConnectionSettings.SlaveAddress)
                 throw new Exception("Tcs9548A has same address.");
@@ -66,7 +68,7 @@ namespace Lavspent.DaisyChain.Devices.TexasInstruments.Tca9548A
 
             // grab parent controller, and get a device from there
             II2cController parentI2cController = I2cControllerManager.Instance.GetI2cController(_deviceId);
-            II2cDevice i2cDevice = parentI2cController.GetDevice(settings);
+            II2cDevice i2cDevice = await parentI2cController.OpenDeviceAsync(settings, cancellationToken).ConfigureAwait(false);
 
             return new Tca9548AI2cDevice(_tca9548A, i2cDevice, _output, settings, _deviceId);
         }

@@ -23,7 +23,7 @@ namespace ConsoleFirmataI2cSd1306
             var firmataClient = await FirmataClient.OpenAsync(serial);
             var i2cController = await firmataClient.GetI2cControllerAsync();
 
-            _i2cDevice = i2cController.GetDevice(new I2cConnectionSettings() { BusSpeed = I2cBusSpeed.StandardMode, SlaveAddress = 0x7A });
+            _i2cDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings() { BusSpeed = I2cBusSpeed.StandardMode, SlaveAddress = 0x7A });
 
             /*
             await i2cDevice.WriteAsync(new byte[] { 0x00, 0xA5 });

@@ -24,6 +24,8 @@
 
 using Lavspent.DaisyChain.I2c;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Lavspent.DaisyChain.Firmata
 {
@@ -40,9 +42,9 @@ namespace Lavspent.DaisyChain.Firmata
             I2cControllerManager.Instance.Register(DeviceId, this);
         }
 
-        public II2cDevice GetDevice(I2cConnectionSettings settings)
+        public Task<II2cDevice> OpenDeviceAsync(I2cConnectionSettings settings, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return new FirmataI2cDevice(_firmataClient, this, settings);
+            return Task.FromResult<II2cDevice>(new FirmataI2cDevice(_firmataClient, this, settings));
         }
 
         private bool disposed = false;

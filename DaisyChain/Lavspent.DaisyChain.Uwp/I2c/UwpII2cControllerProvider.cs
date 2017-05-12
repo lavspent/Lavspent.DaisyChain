@@ -22,6 +22,7 @@
     DEALINGS IN THE SOFTWARE.
 */
 
+using Lavspent.AsyncInline;
 using Windows.Devices.I2c.Provider;
 
 namespace Lavspent.DaisyChain.I2c
@@ -40,13 +41,16 @@ namespace Lavspent.DaisyChain.I2c
 
         public II2cDeviceProvider GetDeviceProvider(ProviderI2cConnectionSettings settings)
         {
+            // open device
             // TODO: int to byte conversion, check overflow
-            return new UwpII2cDeviceProvider(_i2cController.GetDevice(
+            var device = _i2cController.OpenDeviceAsync(
                 new I2cConnectionSettings((byte)settings.SlaveAddress)
                 {
                     BusSpeed = (I2cBusSpeed)settings.BusSpeed,
                     SharingMode = (I2cSharingMode)settings.SharingMode
-                }));
+                }).WaitInline();
+
+            return new UwpII2cDeviceProvider(device);
         }
     }
 }

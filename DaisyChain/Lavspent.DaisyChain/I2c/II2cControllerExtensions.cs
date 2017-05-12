@@ -39,9 +39,9 @@ namespace Lavspent.DaisyChain.I2c
         /// <param name="_this"></param>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public static async Task<II2cDevice> GetDeviceAsync(this Task<II2cController> _this, I2cConnectionSettings settings)
+        public static async Task<II2cDevice> OpenDeviceAsync(this Task<II2cController> _this, I2cConnectionSettings settings)
         {
-            return (await _this.ConfigureAwait(false)).GetDevice(settings);
+            return await (await _this.ConfigureAwait(false)).OpenDeviceAsync(settings).ConfigureAwait(false);
         }
 
     }

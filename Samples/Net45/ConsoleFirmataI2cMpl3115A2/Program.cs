@@ -41,7 +41,7 @@ namespace ConsoleFirmataI2cMpl3115A2
             var i2cController = await firmataClient.GetI2cControllerAsync();
 
             // /*0xc0*/
-            var i2cDevice = i2cController.GetDevice(new I2cConnectionSettings(0x60)); // 
+            var i2cDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(0x60)); // 
 
             await ResetAsync(i2cDevice);
             
