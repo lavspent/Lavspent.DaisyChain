@@ -213,7 +213,7 @@ namespace Lavspent.DaisyChain.Adafruit
             byte address = PCA9685_ADDRESS,
             I2cBusSpeed busSpeed = I2cBusSpeed.StandardMode)
         {
-            var i2cDevice = i2cController.GetDevice(new I2cConnectionSettings(address) { BusSpeed = busSpeed });
+            var i2cDevice = await i2cController.OpenDeviceAsync(new I2cConnectionSettings(address) { BusSpeed = busSpeed });
             var pca9685 = new Pca9685(i2cDevice);
             await pca9685.ResetAsync();
             return pca9685;
