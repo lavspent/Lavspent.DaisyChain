@@ -1,4 +1,45 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+#image: Visual Studio 2017
+configuration:
+- Release
+platform:
+- Any CPU
+#environment:
+  # Don't report back to the mothership
+  #DOTNET_CLI_TELEMETRY_OPTOUT: 1
 build:
   verbosity: minimal
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+install:
+#- ps: appveyor DownloadFile https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-win-x64.latest.exe -FileName "c:\dotnet.exe"
+#- cmd: call c:\dotnet.exe /quiet
+before_build:
+- appveyor-retry dotnet restore #src\ks.model -v Minimal -r %PLATFORM%
+#- appveyor-retry dotnet restore #src\ks -v Minimal -r %PLATFORM%
+build_script:
+- dotnet build -c %CONFIGURATION% -r %PLATFORM%  --version-suffix %LABEL%
+#- dotnet build "src\ks.model" -c %CONFIGURATION% -r %PLATFORM%  --no-dependencies --version-suffix %LABEL%
+
+#after_build:
+#- dotnet publish "src\ks" -c %CONFIGURATION% -r %PLATFORM% --version-suffix %LABEL% -o %APPVEYOR_BUILD_FOLDER%\artifacts\%PLATFORM%
+#- 7z a zip\ks_%PLATFORM%.zip %APPVEYOR_BUILD_FOLDER%\artifacts\%PLATFORM%\*.*
+
+#artifacts:
+#- path: zip\ks_$(platform).zip
+#  name: arti_$(platform)
+#deploy:
+#  release: kscratch-v$(appveyor_build_version)
+#  description: 'Commit build'
+#  provider: GitHub
+#  auth_token: 
+#    secure: R1Od4gYaFkuhqpFUVBJpVZY4CRAeHuzgH4VQBMfWWXwEAEY4iVJo8sNBq4N+4enq # your encrypted token from GitHub
+#  artifact: zip\ks_$(platform).zip            # upload all NuGet packages to release assets
+#  draft: true
+#  prerelease: false
+#  on:
+#    branch: master                 # release from master branch only
+#    appveyor_repo_tag: false        # deploy on tag push only 
+#cache:
+#- '%USERPROFILE%\.nuget\packages'
+#on_finish: # Run the demo to show that it works
