@@ -30,7 +30,7 @@ build_script:
 - dotnet build "DaisyChain\\Lavspent.DaisyChain.Firmata\\Lavspent.DaisyChain.Firmata.csproj" -c %CONFIGURATION% -r "%PLATFORM%"  --version-suffix %LABEL%
 - dotnet build "DaisyChain\\Lavspent.DaisyChain.Fluent\\Lavspent.DaisyChain.Fluent.csproj" -c %CONFIGURATION% -r "%PLATFORM%"  --version-suffix %LABEL%
 - dotnet build "DaisyChain\\Lavspent.DaisyChain.Mocks\\Lavspent.DaisyChain.Mocks.csproj" -c %CONFIGURATION% -r "%PLATFORM%"  --version-suffix %LABEL%
-- msbuild "DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+- msbuild "DaisyChain\\Lavspent.DaisyChain.Net45\\Lavspent.DaisyChain.Net45.csproj" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=%CONFIGURATION% /p:Platform="%PLATFORM%"
 #msbuild "DaisyChain\\Lavspent.DaisyChain.Uwp\\Lavspent.DaisyChain.Uwp.csproj" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 #- dotnet build "src\ks.model" -c %CONFIGURATION% -r %PLATFORM%  --no-dependencies --version-suffix %LABEL%
