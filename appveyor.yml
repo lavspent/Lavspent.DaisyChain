@@ -15,10 +15,10 @@ install:
 #- ps: appveyor DownloadFile https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-win-x64.latest.exe -FileName "c:\dotnet.exe"
 #- cmd: call c:\dotnet.exe /quiet
 before_build:
-- appveyor-retry dotnet restore "DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj" -v Minimal -r %PLATFORM%
+- appveyor-retry dotnet restore "DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj" -v Minimal -r "%PLATFORM%"
 #- appveyor-retry dotnet restore #src\ks -v Minimal -r %PLATFORM%
 build_script:
-- dotnet build "DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj" -c %CONFIGURATION% -r %PLATFORM%  --version-suffix %LABEL%
+- dotnet build "DaisyChain\\Lavspent.DaisyChain\\Lavspent.DaisyChain.csproj" -c %CONFIGURATION% -r "%PLATFORM%"  --version-suffix %LABEL%
 #msbuild "C:\projects\lavspent-daisychain\Lavspent.DaisyChain.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 #- dotnet build "src\ks.model" -c %CONFIGURATION% -r %PLATFORM%  --no-dependencies --version-suffix %LABEL%
