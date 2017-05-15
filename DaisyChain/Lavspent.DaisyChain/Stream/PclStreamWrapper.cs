@@ -76,7 +76,8 @@ namespace Lavspent.DaisyChain.Stream
             try
             {
                 read = await _stream.ReadAsync(buffer, index, length, ctsl.Token /* cancellationToken*/);
-            } catch (TaskCanceledException tce) when (ctsl.IsCancellationRequested)
+            }
+            catch (TaskCanceledException) when (ctsl.IsCancellationRequested)
             {
                 // timeout
                 read = 0;
