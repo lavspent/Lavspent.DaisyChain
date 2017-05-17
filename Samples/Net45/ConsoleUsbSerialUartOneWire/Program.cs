@@ -1,11 +1,12 @@
 ﻿using Lavspent.Backport;
 using Lavspent.DaisyChain.Devices.MaximIntegrated.Ds18B20;
 using Lavspent.DaisyChain.OneWire;
+using Lavspent.DaisyChain.Serial;
+using Lavspent.DaisyChain.Stream;
 using Lavspent.TaskEnumerableExtensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
 using System.Management;
 using System.Threading;
@@ -15,25 +16,41 @@ using System.Threading.Tasks;
 
 namespace ConsoleUsbSerialUartOneWire
 {
+    /*private interface ISerialPortController
+    {
+        ISerialController
+    }*/
+
+    /*public class SerialPortController
+    {
+
+    }*/
 
 
 
     public class SerialPortOneWireBus : IOneWireBus, IDisposable
     {
+        private ISerialController _serialController;
         private string _portName;
-        private SerialPort _serialPort;
-        private Stream _stream;
+        private ISerial _serialPort;
+        private IStream _stream;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="deviceId"></param>
-        public SerialPortOneWireBus(string portName)
+        private SerialPortOneWireBus(ISerialController serialController, string portName)
         {
+            _serialController = serialController ?? throw new ArgumentNullException(nameof(serialController));
             _portName = portName;
+        }
 
-            ResetSerialDevice(9600);
+        public async Task<SerialPortOneWireBus> OpenAsync(ISerialController serialController, string portName)
+        {
+            SerialPortOneWireBus serialPortOneWireBus = new SerialPortOneWireBus(serialController, portName);
+            await serialPortOneWireBus.ResetSerialDeviceAsync(9600);
 
+            return serialPortOneWireBus;
         }
 
         /// <summary>
@@ -41,25 +58,25 @@ namespace ConsoleUsbSerialUartOneWire
         /// </summary>
         /// <param name="baudRate"></param>
         /// <returns></returns>
-        private void ResetSerialDevice(int baudRate)
+        private async Task ResetSerialDeviceAsync(int baudRate)
         {
             if (_serialPort == null)
             {
                 // first time, create and open serial port
-                _serialPort = new SerialPort(
+
+                _serialPort = await _serialController.OpenSerialAsync(
                     _portName,
                     baudRate,
-                    System.IO.Ports.Parity.None,
+                    Lavspent.DaisyChain.Serial.Parity.None,
                     8,
-                    System.IO.Ports.StopBits.One
+                    Lavspent.DaisyChain.Serial.StopBits.One
                     );
-                _serialPort.Handshake = System.IO.Ports.Handshake.None;
-                _serialPort.WriteTimeout = 1000;
-                _serialPort.ReadTimeout = 1000;
 
-                _serialPort.Open();
+                _serialPort.Handshake = Lavspent.DaisyChain.Serial.Handshake.None;
 
-                _stream = _serialPort.BaseStream;
+                _stream = _serialPort.GetStream();
+                _stream.WriteTimeout = TimeSpan.FromMilliseconds(1000);
+                _stream.ReadTimeout = TimeSpan.FromMilliseconds(1000);
             }
             else
             {
@@ -72,17 +89,17 @@ namespace ConsoleUsbSerialUartOneWire
         /// 
         /// </summary>
         /// <returns></returns>
-        public Task ResetAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task ResetAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             // reset serial device
-            ResetSerialDevice(9600);
+            await ResetSerialDeviceAsync(9600);
 
             // send reset pulse
-            _stream.WriteByte(0xF0); /* todo: magic number */
-            _stream.Flush();
+            await _stream.WriteAsync(0xF0); /* todo: magic number */
+            await _stream.FlushAsync();
 
             // get response
-            int responseInt = _stream.ReadByte();
+            int responseInt = await _stream.ReadAsync();
 
             if (responseInt == -1)
             {
@@ -99,10 +116,8 @@ namespace ConsoleUsbSerialUartOneWire
             else
             {
                 // 1-wire device present, switch to data speed
-                ResetSerialDevice(115200);
+                await ResetSerialDeviceAsync(115200);
             }
-
-            return TaskEx.CompletedTask;
         }
 
         /// <summary>
@@ -114,7 +129,7 @@ namespace ConsoleUsbSerialUartOneWire
             _serialPort = null;
         }
 
-        public Task<IEnumerable<OneWireAddress>> GetDeviceAddressesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<OneWireAddress>> GetDeviceAddressesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             // todo: imeplment cancellation
 
@@ -122,7 +137,7 @@ namespace ConsoleUsbSerialUartOneWire
             OneWireAddress address;
             byte node = 0;
             bool lastDevice;
-            while (SearchNext(ref node, out address, out lastDevice))
+            while (await SearchNextAsync(ref node, out address, out lastDevice, cancellationToken))
             {
                 addresses.Add(address);
 
@@ -130,19 +145,17 @@ namespace ConsoleUsbSerialUartOneWire
                     break;
             }
 
-            return Task.FromResult<IEnumerable<OneWireAddress>>(addresses);
+            return addresses;
         }
 
-        public Task MatchRomAsync(byte[] rom, CancellationToken cancellationToken)
+        public async Task MatchRomAsync(byte[] rom, CancellationToken cancellationToken = default(CancellationToken))
         {
-            Write(OneWireCommands.MatchRom);
+            await WriteAsync(new byte[] { OneWireCommands.MatchRom }, cancellationToken);
 
             for (int i = 0; i < 8; i++)
             {
-                Write(rom[i]);
+                await WriteAsync(new byte[] { rom[i] }, cancellationToken);
             }
-
-            return TaskEx.CompletedTask;
         }
 
         /// <summary>
@@ -162,20 +175,19 @@ namespace ConsoleUsbSerialUartOneWire
         /// <param name="buffer"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public Task ReadAsync(byte[] buffer, int length, CancellationToken cancellationToken)
+        public async Task ReadAsync(byte[] buffer, int length, CancellationToken cancellationToken)
         {
             for (int i = 0; i < length; i++)
             {
                 byte byteValue = 0;
                 for (int j = 0; j < 8; j++)
                 {
-                    byte bitValue = ReadBit();
+                    byte bitValue = await ReadBitAsync();
                     byteValue |= (byte)(bitValue << j);
                 }
 
                 buffer[i] = byteValue;
             }
-            return TaskEx.CompletedTask;
         }
 
         /// <summary>
@@ -183,13 +195,8 @@ namespace ConsoleUsbSerialUartOneWire
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public Task WriteAsync(byte[] data, CancellationToken cancellationToken)
-        {
-            Write(data);
-            return TaskEx.CompletedTask;
-        }
 
-        public void Write(params byte[] data)
+        public async Task WriteAsync(byte[] data, CancellationToken cancellationToken = default(CancellationToken))
         {
             // loop through bytes
             for (int i = 0; i < data.Length; i++)
@@ -200,7 +207,7 @@ namespace ConsoleUsbSerialUartOneWire
                 for (int j = 0; j < 8; j++)
                 {
                     byte bitValue = (byte)((byteValue >> j) & 0x01);
-                    WriteBit(bitValue);
+                    await WriteBitAsync(bitValue, cancellationToken);
                 }
             }
         }
@@ -210,24 +217,18 @@ namespace ConsoleUsbSerialUartOneWire
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        private void WriteBit(byte data)
+        private Task WriteBitAsync(byte data, CancellationToken cancellationToken)
         {
-            WriteReadBit(data);
+            return WriteReadBitAsync(data, cancellationToken);
         }
 
-        public Task WriteBitAsync(byte data, CancellationToken cancellationToken)
-        {
-            WriteBit(data);
-            return Task.Run(() => { });
-        }
-
-        private byte WriteReadBit(byte bit)
+        private async Task<byte> WriteReadBitAsync(byte bit, CancellationToken cancellationToken)
         {
             bit = bit == 0 ? (byte)0x00 : (byte)0xff;
-            _stream.WriteByte(bit);
-            _stream.Flush();
+            await _stream.WriteAsync(bit, cancellationToken);
+            await _stream.FlushAsync(cancellationToken);
 
-            int responseInt = _stream.ReadByte();
+            int responseInt = await _stream.ReadAsync(cancellationToken);
             if (responseInt == -1)
                 throw new Exception("End of stream encountered.");
 
@@ -236,35 +237,26 @@ namespace ConsoleUsbSerialUartOneWire
             return response == 0xFF ? (byte)1 : (byte)0;
         }
 
-        private byte ReadBit()
+        private Task<byte> ReadBitAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WriteReadBit(1);
+            return WriteReadBitAsync(1, cancellationToken);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public Task<byte> ReadBitAsync(CancellationToken cancellationToken)
-        {
-            return Task.FromResult(ReadBit());
-        }
 
         public Task SkipRomAsync(CancellationToken cancellationToken)
         {
-            Write(OneWireCommands.SkipRom);
-            return TaskEx.CompletedTask;
+            return WriteAsync(new byte[] { OneWireCommands.SkipRom });
         }
 
 
-        private bool SearchNext(ref byte lastDiscrepancy, out OneWireAddress address, out bool lastDevice)
+        private async Task<bool> SearchNextAsync(ref byte lastDiscrepancy, out OneWireAddress address, out bool lastDevice, CancellationToken cancellationToken)
         {
             address = null;
             byte[] tmpAddress = new byte[8];
             byte lastZero = 0;
-            ResetAsync(); // this runs synchronously
+            await ResetAsync(cancellationToken); // this runs synchronously
 
-            Write(OneWireCommands.SearchRom);
+            await WriteAsync(new byte[] { OneWireCommands.SearchRom }, cancellationToken);
 
             for (byte i = 0; i < 64; i++)
             {
@@ -310,7 +302,7 @@ namespace ConsoleUsbSerialUartOneWire
                     tmpAddress[byteIndex] &= (byte)~bitMask;
 
 
-                WriteBit(searchDirection);
+                WriteBitAsync(searchDirection);
             }
 
             lastDiscrepancy = lastZero;
@@ -325,128 +317,76 @@ namespace ConsoleUsbSerialUartOneWire
 
     internal class ProcessConnection
     {
-
-
         public static ConnectionOptions ProcessConnectionOptions()
 
         {
-
             ConnectionOptions options = new ConnectionOptions();
-
             options.Impersonation = ImpersonationLevel.Impersonate;
-
             options.Authentication = AuthenticationLevel.Default;
-
             options.EnablePrivileges = true;
-
             return options;
-
         }
-
-
 
         public static ManagementScope ConnectionScope(string machineName, ConnectionOptions options, string path)
-
         {
-
             ManagementScope connectScope = new ManagementScope();
-
             connectScope.Path = new ManagementPath(@"\\" + machineName + path);
-
             connectScope.Options = options;
-
             connectScope.Connect();
-
             return connectScope;
-
         }
-
     }
 
 
 
     public class COMPortInfo
-
     {
-
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-
-
         public COMPortInfo() { }
 
-
-
         public static List<COMPortInfo> GetCOMPortsInfo()
-
         {
-
             List<COMPortInfo> comPortInfoList = new List<COMPortInfo>();
 
-
-
             ConnectionOptions options = ProcessConnection.ProcessConnectionOptions();
-
             ManagementScope connectionScope = ProcessConnection.ConnectionScope(Environment.MachineName, options, @"\root\CIMV2");
-
-
 
             ObjectQuery objectQuery = new ObjectQuery("SELECT * FROM Win32_PnPEntity WHERE ConfigManagerErrorCode = 0");
 
             ManagementObjectSearcher comPortSearcher = new ManagementObjectSearcher(connectionScope, objectQuery);
-
-
-
             using (comPortSearcher)
-
             {
-
                 string caption = null;
 
                 foreach (ManagementObject obj in comPortSearcher.Get())
-
                 {
-
                     if (obj != null)
-
                     {
-
                         object captionObj = obj["Caption"];
 
                         if (captionObj != null)
-
                         {
-
                             caption = captionObj.ToString();
 
                             if (caption.Contains("(COM"))
-
                             {
-
                                 COMPortInfo comPortInfo = new COMPortInfo();
-
                                 comPortInfo.Name = caption.Substring(caption.LastIndexOf("(COM")).Replace("(", string.Empty).Replace(")",
-
                                                                      string.Empty);
 
                                 comPortInfo.Description = caption;
-
                                 comPortInfoList.Add(comPortInfo);
 
                             }
-
                         }
-
                     }
-
                 }
-
             }
 
             return comPortInfoList;
-
         }
     }
 
